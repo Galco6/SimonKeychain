@@ -129,4 +129,5 @@
   (lib (name Transformer_THT)(type KiCad)(uri ${KIPRJMOD}/footprints/kicad-footprints/Transformer_THT.pretty)(options "")(descr ""))
   (lib (name Valve)(type KiCad)(uri ${KIPRJMOD}/footprints/kicad-footprints/Valve.pretty)(options "")(descr ""))
   (lib (name Varistor)(type KiCad)(uri ${KIPRJMOD}/footprints/kicad-footprints/Varistor.pretty)(options "")(descr ""))
+  (lib (name Batteries)(type KiCad)(uri /home/galco/simon-keychain/hardware/footprints/KiCad-Libraries/modules/Batteries.pretty)(options "")(descr ""))
 )
