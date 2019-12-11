@@ -119,7 +119,7 @@ U 1 1 5DD3E89A
 P 2750 3300
 F 0 "BT1" H 2868 3396 50  0000 L CNN
 F 1 "Battery_Cell" H 2868 3305 50  0000 L CNN
-F 2 "Batteries:BATT_CR2032_MPD" V 2750 3360 50  0001 C CNN
+F 2 "Battery:BatteryHolder_Keystone_1058_1x2032" V 2750 3360 50  0001 C CNN
 F 3 "~" V 2750 3360 50  0001 C CNN
 	1    2750 3300
 	1    0    0    -1  
@@ -142,7 +142,7 @@ Wire Wire Line
 Wire Wire Line
 	2750 3400 2750 4300
 Wire Wire Line
-	2750 4300 3650 4300
+	2750 4300 3350 4300
 Wire Wire Line
 	4250 4300 4250 3950
 Wire Wire Line
@@ -164,8 +164,6 @@ $EndComp
 Wire Wire Line
 	4250 2100 4250 2450
 Connection ~ 4250 2450
-Wire Wire Line
-	2750 2450 4250 2450
 $Comp
 L Device:R R1
 U 1 1 5DD6EDA4
@@ -385,4 +383,27 @@ F 3 "" H 6200 2900 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	6250 2600 6200 2600
+$Comp
+L Device:C C1
+U 1 1 5DD84A38
+P 3350 3150
+F 0 "C1" H 3465 3196 50  0000 L CNN
+F 1 "C" H 3465 3105 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3388 3000 50  0001 C CNN
+F 3 "~" H 3350 3150 50  0001 C CNN
+	1    3350 3150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3350 3000 3350 2450
+Wire Wire Line
+	2750 2450 3350 2450
+Connection ~ 3350 2450
+Wire Wire Line
+	3350 2450 4250 2450
+Wire Wire Line
+	3350 3300 3350 4300
+Connection ~ 3350 4300
+Wire Wire Line
+	3350 4300 3650 4300
 $EndSCHEMATC
