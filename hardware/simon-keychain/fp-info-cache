@@ -1,4 +1,4 @@
-17103368171116986
+17106525307552986
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -30689,6 +30689,13 @@ Through hole pin header THT 2x03 2.54mm double row
 6
 Connector_PinHeader_2.54mm
 PinHeader_2x03_P2.54mm_Vertical_SMD
+surface-mounted straight pin header, 2x03, 2.54mm pitch, double rows
+Surface mounted pin header SMD 2x03 2.54mm double row
+0
+6
+6
+Connector_PinHeader_2.54mm
+PinHeader_2x03_P2.54mm_Vertical_SMD_ISP
 surface-mounted straight pin header, 2x03, 2.54mm pitch, double rows
 Surface mounted pin header SMD 2x03 2.54mm double row
 0
@@ -69387,6 +69394,13 @@ Symbol
 FCC-Logo_48.3x40mm_SilkScreen
 FCC marking
 Logo FCC certification
+0
+0
+0
+Symbol
+Github_logo
+
+
 0
 0
 0

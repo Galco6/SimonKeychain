@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name simon-keychain-rescue)(type Legacy)(uri ${KIPRJMOD}/simon-keychain-rescue.lib)(options "")(descr ""))
+)
