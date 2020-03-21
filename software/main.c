@@ -1,3 +1,4 @@
+#define F_CPU 1000000UL
 #include <avr/io.h>                  
 #include <util/delay.h>                     
 #include "portpins.h"
@@ -5,12 +6,28 @@
 uint8_t random_seq[20];
 
 uint8_t random4(void);
-void tone(uint8_t ocr);
+void tone(unsigned char divisor, unsigned char octave, int duration);
+void simon_start(void);
+void blink_random_led (uint8_t led);
 
 uint8_t button;
 uint8_t button_pulse;
 
 uint8_t count = 0;
+
+// Notes
+const int Note_C  = 239;
+const int Note_CS = 225;
+const int Note_D  = 213;
+const int Note_DS = 201;
+const int Note_E  = 190;
+const int Note_F  = 179;
+const int Note_FS = 169;
+const int Note_G  = 159;
+const int Note_GS = 150;
+const int Note_A  = 142;
+const int Note_AS = 134;
+const int Note_B  = 127;
 
 int main(void) {
 
@@ -31,7 +48,9 @@ int main(void) {
   
   simon_start();
 
-  DDRD |= (1 << PD6);
+  DDRB |= (1 << PB0);
+  TCCR0A |= (1<<WGM01); // set timer mode to Fast PWM
+	TCCR0A |= (1<<COM0A0);
 
   _delay_ms(800);
 
@@ -71,28 +90,28 @@ int main(void) {
       switch (PINB & 0b00011110) {
       case (0b00011100):
         button = 0;
-        tone(15);
+        tone(Note_C, 4, 500);
         break;
       case (0b00011010):
         button = 1;
-        tone(20);
+        tone(Note_C, 4, 500);
         break;
         case 0b00010110:
         button = 2;
-        tone(70);
+        tone(Note_C, 4, 500);
         break;
         case 0b00001110:
         button = 3;
-        tone(120);
+        tone(Note_C, 4, 500);
         break;
       }
 
       if (random_seq[j] != button)
       {
         error = 1;
-        tone(220);
-        tone(220);
-        tone(220);
+        tone(Note_C, 4, 500);
+        tone(Note_C, 4, 500);
+        tone(Note_C, 4, 500);
         break;
       }
 
@@ -155,7 +174,7 @@ void blink_random_led (uint8_t led) {
       PORTB |= (1 << PB2) | (1 << PB3);
       DDRB |= (1 << PB1);  
       PORTB &= ~(1<<PB1);
-      tone(15);
+      tone(Note_C, 4, 500);
       PORTB |= (1 << PB1);
     break;
 
@@ -164,7 +183,7 @@ void blink_random_led (uint8_t led) {
       PORTB |= (1 << PB2) | (1 << PB3);
       DDRB |= (1 << PB2);  
       PORTB &= ~(1<<PB2);
-      tone(20);
+      tone(Note_C, 4, 500);
       PORTB |= (1 << PB2);
     break;
 
@@ -173,7 +192,7 @@ void blink_random_led (uint8_t led) {
       PORTB |= (1 << PB2) | (1 << PB3);
       DDRB |= (1 << PB3);  
       PORTB &= ~(1<<PB3);
-      tone(70);
+      tone(Note_C, 4, 500);
       PORTB |= (1 << PB3);
     break;
 
@@ -182,7 +201,7 @@ void blink_random_led (uint8_t led) {
       PORTB |= (1 << PB2) | (1 << PB3);
       DDRB |= (1 << PB4);  
       PORTB &= ~(1<<PB4);
-      tone(120);
+      tone(Note_C, 4, 500);
       PORTB |= (1 << PB4);
     break;
   }
@@ -198,10 +217,10 @@ uint8_t random4(void) {
         return (4*s)/255;
 }
 
-void tone(uint8_t ocr) {
-  TCCR0A = 0b01000010;
-  TCCR0B = 0b00000100;
-  OCR0A = ocr;         // set the OCR
-  _delay_ms(200);
-  TCCR0A = 0b00000000; 
+void tone(unsigned char divisor, unsigned char octave, int duration) {
+  TCCR0A = 0x90 | (8-octave); // for 1MHz clock
+  // TCCR1 = 0x90 | (11-octave); // for 8MHz clock
+  OCR0A = divisor-1;         // set the OCR
+  _delay_ms(500);
+  TCCR0A = 0x90;              // stop the counter
 }
