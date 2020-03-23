@@ -144,17 +144,6 @@ F 3 "~" H 7250 2950 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:R R2
-U 1 1 5DD712BE
-P 7250 3250
-F 0 "R2" V 7043 3250 50  0000 C CNN
-F 1 "R" V 7134 3250 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal" V 7180 3250 50  0001 C CNN
-F 3 "~" H 7250 3250 50  0001 C CNN
-	1    7250 3250
-	0    1    1    0   
-$EndComp
-$Comp
 L Device:R R3
 U 1 1 5DD7148F
 P 7250 3550
@@ -185,13 +174,9 @@ Wire Wire Line
 Wire Wire Line
 	6900 3550 7100 3550
 Wire Wire Line
-	4850 3450 5100 3450
-Wire Wire Line
 	7400 2950 7900 2950
 Wire Wire Line
 	7400 3250 7900 3250
-Wire Wire Line
-	7400 3550 7900 3550
 Wire Wire Line
 	7400 3850 7900 3850
 Wire Wire Line
@@ -278,10 +263,8 @@ Wire Wire Line
 	6750 3450 6750 3850
 Wire Wire Line
 	5100 3450 6750 3450
-Connection ~ 5100 3450
 Wire Wire Line
 	6000 4200 6000 3250
-Connection ~ 6000 3250
 Wire Wire Line
 	6000 3250 7100 3250
 Wire Wire Line
@@ -387,20 +370,16 @@ Wire Wire Line
 	8200 3550 8950 3550
 Wire Wire Line
 	8200 3850 8950 3850
-Connection ~ 5550 3350
 Wire Wire Line
 	5550 3350 6900 3350
 Wire Wire Line
-	4850 3350 5550 3350
+	4850 3350 5100 3350
 Wire Wire Line
 	5350 2400 5600 2400
 Text GLabel 5000 3550 3    50   Input ~ 0
 RST
 Wire Wire Line
-	5150 3250 6000 3250
-Wire Wire Line
 	4850 3250 5150 3250
-Connection ~ 5150 3250
 Wire Wire Line
 	5150 1750 5150 3250
 Wire Wire Line
@@ -445,20 +424,20 @@ F 3 "" H 3850 2100 50  0001 C CNN
 	1    3850 2100
 	1    0    0    -1  
 $EndComp
-Text GLabel 2450 1600 2    50   Input ~ 0
-SCK
 Text GLabel 2450 1500 2    50   Input ~ 0
+SCK
+Text GLabel 2450 1600 2    50   Input ~ 0
 MISO
 Text GLabel 2450 1400 2    50   Input ~ 0
 MOSI
 Text GLabel 2450 1300 2    50   Input ~ 0
 RST
 Wire Wire Line
-	2250 1500 2450 1500
+	2250 1600 2450 1600
 Wire Wire Line
 	2250 1400 2450 1400
 Wire Wire Line
-	2250 1600 2450 1600
+	2250 1500 2450 1500
 Wire Wire Line
 	2250 1300 2450 1300
 $Comp
@@ -473,29 +452,64 @@ F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/atmel-2586-avr-8-bit-microc
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1750 750  1750 1000
+	1750 2150 1750 1900
 $Comp
 L power:+3.3V #PWR0109
 U 1 1 5E76BB5E
-P 1750 750
-F 0 "#PWR0109" H 1750 600 50  0001 C CNN
-F 1 "+3.3V" H 1765 923 50  0000 C CNN
-F 2 "" H 1750 750 50  0001 C CNN
-F 3 "" H 1750 750 50  0001 C CNN
-	1    1750 750 
-	1    0    0    -1  
+P 1750 2150
+F 0 "#PWR0109" H 1750 2000 50  0001 C CNN
+F 1 "+3.3V" H 1765 2323 50  0000 C CNN
+F 2 "" H 1750 2150 50  0001 C CNN
+F 3 "" H 1750 2150 50  0001 C CNN
+	1    1750 2150
+	-1   0    0    1   
 $EndComp
 $Comp
 L power:GND #PWR0110
 U 1 1 5E7717CF
-P 1750 2000
-F 0 "#PWR0110" H 1750 1750 50  0001 C CNN
-F 1 "GND" H 1755 1827 50  0000 C CNN
-F 2 "" H 1750 2000 50  0001 C CNN
-F 3 "" H 1750 2000 50  0001 C CNN
-	1    1750 2000
-	1    0    0    -1  
+P 1750 900
+F 0 "#PWR0110" H 1750 650 50  0001 C CNN
+F 1 "GND" H 1755 727 50  0000 C CNN
+F 2 "" H 1750 900 50  0001 C CNN
+F 3 "" H 1750 900 50  0001 C CNN
+	1    1750 900 
+	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	1750 1900 1750 2000
+	1750 1000 1750 900 
+Wire Wire Line
+	7400 3550 7900 3550
+$Comp
+L Device:R R2
+U 1 1 5DD712BE
+P 7250 3250
+F 0 "R2" V 7043 3250 50  0000 C CNN
+F 1 "R" V 7134 3250 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal" V 7180 3250 50  0001 C CNN
+F 3 "~" H 7250 3250 50  0001 C CNN
+	1    7250 3250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5100 3450 5100 3350
+Connection ~ 5100 3450
+Wire Wire Line
+	6000 3250 5350 3250
+Wire Wire Line
+	5350 3250 5350 3400
+Wire Wire Line
+	5350 3400 4950 3400
+Wire Wire Line
+	4950 3400 4950 3450
+Wire Wire Line
+	4950 3450 4850 3450
+Connection ~ 6000 3250
+Wire Wire Line
+	5550 3350 5200 3350
+Wire Wire Line
+	5200 3350 5200 3250
+Wire Wire Line
+	5200 3250 5150 3250
+Connection ~ 5550 3350
+Connection ~ 5150 3250
 $EndSCHEMATC
